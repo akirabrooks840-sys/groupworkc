@@ -1,0 +1,7 @@
+[build]
+command = "npm run build"
+publish = "dist"
+
+# If you’re using a SPA fallback (React Router), uncomment next line:
+# command = "npm run build && cp -r dist/* .netlify/functions || true"
+
