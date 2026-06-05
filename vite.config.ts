@@ -3,18 +3,27 @@ import viteReact from "@vitejs/plugin-react";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   plugins: [
     tsConfigPaths(),
     tailwindcss(),
     tanstackStart({
-      server: { entry: "server" },
+      server: { entry: "./src/server.ts" },
     }),
     viteReact(),
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    nitro(),
   ],
+  environments: {
+    ssr: {
+      build: {
+        rollupOptions: {
+          input: "./src/server.ts",
+        },
+      },
+    },
+  },
   build: {
     target: "es2022",
   },
