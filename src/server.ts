@@ -55,7 +55,7 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default createServerEntry({
   async fetch(request: Request) {
     try {
-      const response = await handler.fetch(request, env, ctx);
+      const response = await handler.fetch(request);
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
       console.error(error);
