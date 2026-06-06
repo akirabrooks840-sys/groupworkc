@@ -5,6 +5,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
 
+const isNetlify = !!process.env.NETLIFY;
 const isVercel = !!process.env.VERCEL;
 
 export default defineConfig({
@@ -15,7 +16,13 @@ export default defineConfig({
       server: { entry: "./src/server.ts" },
     }),
     viteReact(),
-    nitro(isVercel ? { preset: "vercel" } : {}),
+    nitro(
+      isNetlify
+        ? { preset: "netlify" }
+        : isVercel
+          ? { preset: "vercel" }
+          : {}
+    ),
   ],
   environments: {
     ssr: {
