@@ -15,11 +15,7 @@ export default defineConfig({
       server: { entry: "./src/server.ts" },
     }),
     viteReact(),
-    nitro({
-      config: {
-        preset: isVercel ? "vercel" : undefined,
-      },
-    }),
+    nitro(isVercel ? { preset: "vercel" } : {}),
   ],
   environments: {
     ssr: {
