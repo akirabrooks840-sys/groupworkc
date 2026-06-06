@@ -4,10 +4,3 @@
 
 [functions]
   directory = ".netlify/functions-internal/server"
-
-# Route all requests to the server function for SSR
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server/:splat"
-  status = 200
-  force = true
