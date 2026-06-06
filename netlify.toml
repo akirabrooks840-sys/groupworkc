@@ -5,7 +5,5 @@
 [functions]
   directory = ".netlify/functions-internal/server"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Remove catch-all redirects for SSR apps
+# The server handles all routing
