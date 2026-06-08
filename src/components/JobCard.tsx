@@ -2,9 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { BadgeCheck, Clock, MapPin } from "lucide-react";
 import type { Job } from "@/lib/types";
 import { formatDistanceToNowStrict } from "date-fns";
+import { ngn } from "@/lib/utils";
 
 function money(n: number) {
-  return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  return ngn(n);
 }
 
 export function JobCard({ job }: { job: Job }) {
@@ -37,7 +38,7 @@ export function JobCard({ job }: { job: Job }) {
           <div className="text-base font-semibold">
             {job.paymentType === "fixed"
               ? `${money(job.budgetMin)} – ${money(job.budgetMax)}`
-              : `$${job.budgetMin}–$${job.budgetMax}/hr`}
+              : `${ngn(job.budgetMin)}–${ngn(job.budgetMax)}/hr`}
           </div>
           <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
             {job.paymentType === "fixed" ? "Fixed price" : "Hourly"}

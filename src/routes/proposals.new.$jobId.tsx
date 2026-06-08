@@ -25,11 +25,11 @@ function NewProposal() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [coverLetter, setCoverLetter] = useState("");
   const [paymentType, setPaymentType] = useState<"fixed" | "hourly">("fixed");
-  const [bidAmount, setBidAmount] = useState(5000);
+  const [bidAmount, setBidAmount] = useState(1500000);
   const [milestones, setMilestones] = useState<{ title: string; amount: number; dueDays: number }[]>([
-    { title: "Kickoff & architecture", amount: 1500, dueDays: 7 },
-    { title: "Implementation phase 1", amount: 2000, dueDays: 21 },
-    { title: "Final delivery & QA", amount: 1500, dueDays: 35 },
+    { title: "Kickoff & architecture", amount: 400000, dueDays: 7 },
+    { title: "Implementation phase 1", amount: 700000, dueDays: 21 },
+    { title: "Final delivery & QA", amount: 400000, dueDays: 35 },
   ]);
 
   if (!job) return <div className="mx-auto max-w-3xl px-4 py-24 text-center">Job not found</div>;
@@ -95,14 +95,14 @@ function NewProposal() {
               </div>
             </div>
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">{paymentType === "fixed" ? "Total bid (USD)" : "Hourly rate (USD)"}</label>
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">{paymentType === "fixed" ? "Total bid (₦)" : "Hourly rate (₦)"}</label>
               <input type="number" value={bidAmount} min={1} onChange={(e) => setBidAmount(Number(e.target.value))} className="h-12 w-full rounded-xl border border-border bg-background px-4 text-lg font-semibold" />
             </div>
             <div className="rounded-xl border border-dashed border-border bg-background p-4 text-sm">
-              <Row label="Your bid" value={`$${bidAmount.toLocaleString()}`} />
-              <Row label="Platform service fee (10%)" value={`-$${fee.toLocaleString()}`} muted />
+              <Row label="Your bid" value={`₦${bidAmount.toLocaleString("en-NG")}`} />
+              <Row label="Platform service fee (10%)" value={`-₦${fee.toLocaleString("en-NG")}`} muted />
               <div className="my-2 border-t border-border" />
-              <Row label="You'll receive" value={`$${payout.toLocaleString()}`} strong />
+              <Row label="You'll receive" value={`₦${payout.toLocaleString("en-NG")}`} strong />
             </div>
           </div>
         )}
@@ -113,12 +113,12 @@ function NewProposal() {
             {milestones.map((m, i) => (
               <div key={i} className="grid gap-2 rounded-xl border border-border bg-background p-3 sm:grid-cols-[1fr_120px_120px_36px]">
                 <input value={m.title} onChange={(e) => { const next = [...milestones]; next[i] = { ...m, title: e.target.value }; setMilestones(next); }} className="h-10 rounded-lg border border-border bg-surface px-3 text-sm" />
-                <input type="number" value={m.amount} onChange={(e) => { const next = [...milestones]; next[i] = { ...m, amount: Number(e.target.value) }; setMilestones(next); }} className="h-10 rounded-lg border border-border bg-surface px-3 text-sm" placeholder="$" />
+                <input type="number" value={m.amount} onChange={(e) => { const next = [...milestones]; next[i] = { ...m, amount: Number(e.target.value) }; setMilestones(next); }} className="h-10 rounded-lg border border-border bg-surface px-3 text-sm" placeholder="₦" />
                 <input type="number" value={m.dueDays} onChange={(e) => { const next = [...milestones]; next[i] = { ...m, dueDays: Number(e.target.value) }; setMilestones(next); }} className="h-10 rounded-lg border border-border bg-surface px-3 text-sm" placeholder="days" />
                 <button type="button" onClick={() => setMilestones(milestones.filter((_, j) => j !== i))} className="h-10 rounded-lg border border-border text-sm text-muted-foreground hover:text-destructive">×</button>
               </div>
             ))}
-            <button type="button" onClick={() => setMilestones([...milestones, { title: "New milestone", amount: 500, dueDays: 14 }])} className="text-sm font-medium text-accent hover:underline">+ Add milestone</button>
+            <button type="button" onClick={() => setMilestones([...milestones, { title: "New milestone", amount: 200000, dueDays: 14 }])} className="text-sm font-medium text-accent hover:underline">+ Add milestone</button>
           </div>
         )}
 

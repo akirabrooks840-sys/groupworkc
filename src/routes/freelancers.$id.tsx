@@ -38,7 +38,7 @@ function FreelancerProfile() {
             </div>
           </div>
           <div className="text-right">
-            <div className="font-display text-3xl font-bold">${user.hourlyRate}<span className="text-base text-muted-foreground">/hr</span></div>
+            <div className="font-display text-3xl font-bold">₦{(user.hourlyRate ?? 0).toLocaleString("en-NG")}<span className="text-base text-muted-foreground">/hr</span></div>
             <button className="mt-3 inline-flex h-10 items-center rounded-xl bg-foreground px-5 text-sm font-semibold text-background">Invite to job</button>
           </div>
         </div>

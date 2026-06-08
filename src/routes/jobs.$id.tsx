@@ -40,7 +40,7 @@ function JobDetail() {
             <h1 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">{job.title}</h1>
 
             <div className="mt-6 grid gap-4 rounded-xl border border-border bg-background p-5 sm:grid-cols-4">
-              <Stat label="Budget" value={job.paymentType === "fixed" ? `$${job.budgetMin.toLocaleString()}–$${job.budgetMax.toLocaleString()}` : `$${job.budgetMin}–$${job.budgetMax}/hr`} />
+              <Stat label="Budget" value={job.paymentType === "fixed" ? `₦${job.budgetMin.toLocaleString("en-NG")}–₦${job.budgetMax.toLocaleString("en-NG")}` : `₦${job.budgetMin.toLocaleString("en-NG")}–₦${job.budgetMax.toLocaleString("en-NG")}/hr`} />
               <Stat label="Type" value={job.paymentType === "fixed" ? "Fixed" : "Hourly"} />
               <Stat label="Experience" value={<span className="capitalize">{job.experience}</span>} />
               <Stat label="Duration" value={labelForDuration(job.duration)} />

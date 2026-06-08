@@ -79,7 +79,7 @@ function ClientView({ clientId }: { clientId: string }) {
                       <div className="font-display font-semibold">{p.freelancerName}</div>
                       <div className="text-xs text-muted-foreground line-clamp-1">on “{p.jobTitle}”</div>
                     </div>
-                    <div className="text-right text-sm font-semibold">${p.bidAmount.toLocaleString()}</div>
+                    <div className="text-right text-sm font-semibold">₦{p.bidAmount.toLocaleString("en-NG")}</div>
                   </div>
                   <p className="mt-2 line-clamp-2 text-xs text-muted-foreground">{p.coverLetter}</p>
                   <div className="mt-3 flex gap-2">
@@ -107,7 +107,7 @@ function FreelancerView({ freelancerId }: { freelancerId: string }) {
       <div className="grid gap-3 sm:grid-cols-4">
         <StatCard icon={FileText} label="Active proposals" value={active.length} />
         <StatCard icon={CheckCircle2} label="Accepted" value={accepted.length} />
-        <StatCard icon={DollarSign} label="Pipeline value" value={`$${earnings.toLocaleString()}`} />
+        <StatCard icon={DollarSign} label="Pipeline value" value={`₦${earnings.toLocaleString("en-NG")}`} />
         <StatCard icon={Sparkles} label="Profile strength" value="88%" />
       </div>
 
@@ -131,7 +131,7 @@ function FreelancerView({ freelancerId }: { freelancerId: string }) {
                     {myProposals.map((p) => (
                       <tr key={p.id} className="border-t border-border transition-colors hover:bg-secondary/40">
                         <td className="p-4 font-medium">{p.jobTitle}</td>
-                        <td className="p-4">${p.bidAmount.toLocaleString()} <span className="text-xs text-muted-foreground">{p.paymentType}</span></td>
+                        <td className="p-4">₦{p.bidAmount.toLocaleString("en-NG")} <span className="text-xs text-muted-foreground">{p.paymentType}</span></td>
                         <td className="p-4 text-muted-foreground">{new Date(p.submittedAt).toLocaleDateString()}</td>
                         <td className="p-4">
                           <StatusPill status={p.status} />
@@ -147,7 +147,7 @@ function FreelancerView({ freelancerId }: { freelancerId: string }) {
         <aside className="space-y-4">
           <div className="rounded-2xl border border-border bg-surface p-5">
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Earnings · last 30d</div>
-            <div className="mt-2 font-display text-3xl font-bold">${earnings.toLocaleString()}</div>
+            <div className="mt-2 font-display text-3xl font-bold">₦{earnings.toLocaleString("en-NG")}</div>
             <Sparkline />
           </div>
           <div className="rounded-2xl border border-border bg-primary p-5 text-primary-foreground">
