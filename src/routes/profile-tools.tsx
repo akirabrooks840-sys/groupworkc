@@ -161,7 +161,7 @@ function ProfileTools() {
           <div className="mt-5 grid grid-cols-2 gap-3 text-xs sm:grid-cols-4">
             <Mini label="Skills" value={`${me.skills?.length ?? 0}`} ok={(me.skills?.length ?? 0) >= 5} />
             <Mini label="Bio" value={me.bio ? "Filled" : "Missing"} ok={!!me.bio} />
-            <Mini label="Rate" value={me.hourlyRate ? `$${me.hourlyRate}/h` : "—"} ok={!!me.hourlyRate} />
+            <Mini label="Rate" value={me.hourlyRate ? `₦${me.hourlyRate.toLocaleString("en-NG")}/h` : "—"} ok={!!me.hourlyRate} />
             <Mini label="Location" value={me.location ? "Set" : "—"} ok={!!me.location} />
           </div>
         </div>
@@ -298,7 +298,7 @@ function buildSuggestions(u: User): Tip[] {
       id: "rate",
       title: u.hourlyRate ? "Benchmark your rate" : "Set an hourly rate",
       body: u.hourlyRate
-        ? `Your rate of $${u.hourlyRate}/h is within range. Clients filtering at $${u.hourlyRate + 25}/h see you when you opt-in.`
+        ? `Your rate of ₦${u.hourlyRate.toLocaleString("en-NG")}/h is within range. Clients filtering at ₦${(u.hourlyRate + 5000).toLocaleString("en-NG")}/h see you when you opt-in.`
         : "Profiles without a rate are filtered out of 64% of premium searches.",
       done: !!u.hourlyRate,
       impact: "high",

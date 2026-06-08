@@ -70,9 +70,9 @@ function Contact() {
 
         <aside className="space-y-3">
           {[
-            { icon: Mail, t: "Email", d: "hello@hirewave.app" },
+            { icon: Mail, t: "Email", d: "hello@hirewave.ng" },
             { icon: MessagesSquare, t: "Response time", d: "Usually within a day or two" },
-            { icon: MapPin, t: "Where we are", d: "Built remotely — a school project" },
+            { icon: MapPin, t: "Where we are", d: "Lagos, Nigeria — a school project" },
           ].map((c) => (
             <div key={c.t} className="flex items-start gap-3 rounded-2xl border border-border bg-surface p-5">
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent/15 text-accent"><c.icon className="h-5 w-5" /></div>

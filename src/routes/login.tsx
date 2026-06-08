@@ -79,7 +79,7 @@ function Login() {
                   "relative block w-full rounded-md border-0 py-1.5 px-3 text-foreground ring-1 ring-inset placeholder:text-muted-foreground focus:z-10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-background",
                   errors.email ? "ring-destructive" : "ring-input"
                 )}
-                placeholder="you@example.com"
+                placeholder="you@hirewave.ng"
               />
               {errors.email && (
                 <p className="mt-1 text-xs text-destructive">{errors.email}</p>

@@ -2,7 +2,7 @@ import { useRef, useSyncExternalStore } from "react";
 import type { Job, Proposal, Review, User } from "./types";
 import { seedJobs, seedReviews, seedUsers } from "./seed";
 
-const KEY = "hirewave.state.v1";
+const KEY = "hirewave.state.v2";
 
 interface State {
   users: User[];
@@ -143,7 +143,7 @@ export const actions = {
             desiredJob: input.desiredJob?.trim(),
             pitch: input.pitch?.trim(),
             skills: [],
-            hourlyRate: 50,
+            hourlyRate: 15000,
             verificationStatus: "pending" as const,
           }
         : {}),

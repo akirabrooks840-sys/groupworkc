@@ -30,7 +30,7 @@ function PostJob() {
   const [category, setCategory] = useState("Web Development");
   const [skillsRaw, setSkillsRaw] = useState("");
   const [paymentType, setPaymentType] = useState<"fixed" | "hourly">("fixed");
-  const [budget, setBudget] = useState<[number, number]>([2000, 8000]);
+  const [budget, setBudget] = useState<[number, number]>([500000, 2500000]);
   const [experience, setExperience] = useState<"entry" | "intermediate" | "expert">("expert");
   const [duration, setDuration] = useState<"less-1m" | "1-3m" | "3-6m" | "6m+">("1-3m");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -91,7 +91,7 @@ function PostJob() {
           </div>
         </Field>
 
-        <Field label={paymentType === "fixed" ? `Budget range $${budget[0].toLocaleString()} – $${budget[1].toLocaleString()}` : `Hourly rate $${budget[0]} – $${budget[1]}/hr`}>
+        <Field label={paymentType === "fixed" ? `Budget range ₦${budget[0].toLocaleString("en-NG")} – ₦${budget[1].toLocaleString("en-NG")}` : `Hourly rate ₦${budget[0].toLocaleString("en-NG")} – ₦${budget[1].toLocaleString("en-NG")}/hr`}>
           <div className="grid grid-cols-2 gap-3">
             <input type="number" value={budget[0]} min={0} onChange={(e) => setBudget([Number(e.target.value), budget[1]])} className="input" />
             <input type="number" value={budget[1]} min={0} onChange={(e) => setBudget([budget[0], Number(e.target.value)])} className="input" />

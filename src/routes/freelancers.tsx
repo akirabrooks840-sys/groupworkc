@@ -15,7 +15,7 @@ export const Route = createFileRoute("/freelancers")({
 function FreelancersPage() {
   const all = useStore(sel.freelancers);
   const [q, setQ] = useState("");
-  const [rate, setRate] = useState<[number]>([200]);
+  const [rate, setRate] = useState<[number]>([50000]);
   const ready = useDelayedReady(350, [q, rate[0]]);
 
   const list = useMemo(() => {
@@ -47,8 +47,8 @@ function FreelancersPage() {
             </div>
           </div>
           <div>
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Max hourly rate · ${rate[0]}/hr</div>
-            <Slider value={rate as number[]} onValueChange={(v) => setRate([v[0]] as [number])} min={30} max={250} step={5} />
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Max hourly rate · ₦{rate[0].toLocaleString("en-NG")}/hr</div>
+            <Slider value={rate as number[]} onValueChange={(v) => setRate([v[0]] as [number])} min={5000} max={50000} step={1000} />
           </div>
         </aside>
 

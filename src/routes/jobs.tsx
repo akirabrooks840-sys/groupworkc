@@ -27,7 +27,7 @@ const durations = [
 function JobsPage() {
   const { q: initialQ } = useSearch({ from: "/jobs" });
   const [q, setQ] = useState(initialQ ?? "");
-  const [budget, setBudget] = useState<[number]>([20000]);
+  const [budget, setBudget] = useState<[number]>([6000000]);
   const [exp, setExp] = useState<Set<string>>(new Set());
   const [dur, setDur] = useState<Set<string>>(new Set());
   const [payment, setPayment] = useState<"all" | "fixed" | "hourly">("all");
@@ -72,7 +72,7 @@ function JobsPage() {
         <aside className="space-y-6 rounded-2xl border border-border bg-surface p-5 h-fit sticky top-20">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-display font-semibold"><SlidersHorizontal className="h-4 w-4" /> Filters</div>
-            <button onClick={() => { setExp(new Set()); setDur(new Set()); setPayment("all"); setBudget([20000]); }} className="text-xs text-muted-foreground hover:text-foreground">Reset</button>
+            <button onClick={() => { setExp(new Set()); setDur(new Set()); setPayment("all"); setBudget([6000000]); }} className="text-xs text-muted-foreground hover:text-foreground">Reset</button>
           </div>
 
           <FilterGroup label="Payment type">
@@ -83,8 +83,8 @@ function JobsPage() {
             </div>
           </FilterGroup>
 
-          <FilterGroup label={`Budget up to $${budget[0].toLocaleString()}`}>
-            <Slider value={budget as number[]} onValueChange={(v) => setBudget([v[0]] as [number])} min={500} max={20000} step={500} />
+          <FilterGroup label={`Budget up to ₦${budget[0].toLocaleString("en-NG")}`}>
+            <Slider value={budget as number[]} onValueChange={(v) => setBudget([v[0]] as [number])} min={100000} max={6000000} step={100000} />
           </FilterGroup>
 
           <FilterGroup label="Experience level">

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { MapPin, Star } from "lucide-react";
 import type { User } from "@/lib/types";
 import { Avatar } from "@/components/Avatar";
+import { ngn } from "@/lib/utils";
 
 export function FreelancerCard({ user }: { user: User }) {
   return (
@@ -19,7 +20,7 @@ export function FreelancerCard({ user }: { user: User }) {
               <div className="truncate text-sm text-muted-foreground">{user.title}</div>
             </div>
             <div className="text-right">
-              <div className="text-base font-semibold">${user.hourlyRate}/hr</div>
+              <div className="text-base font-semibold">{ngn(user.hourlyRate ?? 0)}/hr</div>
               <div className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
                 <Star className="h-3 w-3 fill-accent text-accent" /> 5.0
               </div>
