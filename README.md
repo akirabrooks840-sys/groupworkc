@@ -18,7 +18,7 @@ TypeScript was chosen as the primary language to ensure code reliability, mainta
 
 ## Authors
 
-- **Written by:** Aioflcu
+- **Written by:** groupcmembers
 - **Project:** School Group C Assignment
 
 - group members comprises of
